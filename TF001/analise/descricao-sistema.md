@@ -1,4 +1,4 @@
-# 1. Descrição do Sistema
+# Descrição do Sistema
 
 ## 1. Nome e propósito do sistema
 
