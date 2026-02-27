@@ -1,6 +1,6 @@
 # Descrição do Sistema
 
-## 1. Nome e propósito do sistema
+## Nome e propósito do sistema
 
 O sistema analisado é o **WhatsApp**, uma plataforma de comunicação instantânea desenvolvida para permitir a troca de mensagens em tempo real entre usuários, utilizando conexão com a internet.
 
@@ -8,7 +8,7 @@ Seu principal propósito é oferecer comunicação rápida, segura e de baixo cu
 
 ---
 
-## 2. Principais funcionalidades
+## Principais funcionalidades
 
 * Envio e recebimento de mensagens de texto em tempo real
 * Envio de áudios (mensagens de voz)
@@ -23,7 +23,7 @@ Seu principal propósito é oferecer comunicação rápida, segura e de baixo cu
 
 ---
 
-## 3. Tipo de usuários (quantos, perfis diferentes)
+## Tipo de usuários (quantos, perfis diferentes)
 
 O sistema possui mais de **2 bilhões de usuários ativos globalmente**, distribuídos em diferentes perfis:
 
@@ -36,7 +36,7 @@ Os perfis variam entre uso informal (conversas pessoais), uso educacional (grupo
 
 ---
 
-## 4. Contexto de uso (mobile, web, desktop)
+## Contexto de uso (mobile, web, desktop)
 
 O sistema é utilizado principalmente em dispositivos **mobile (Android e iOS)**, sendo essa sua plataforma principal.
 
