@@ -1,5 +1,4 @@
 # Identificação de Trade-offs
-
 ---
 
 ## Trade-off 1: Segurança vs Performance
