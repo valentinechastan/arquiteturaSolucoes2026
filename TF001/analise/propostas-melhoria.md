@@ -1,4 +1,4 @@
-# 5. Proposta de Melhoria
+# Proposta de Melhoria
 
 ---
 
