@@ -1,7 +1,5 @@
 # Análise dos Princípios Arquiteturais
 
----
-
 ## Separação de Responsabilidades
 
 ### Camadas e módulos identificados
