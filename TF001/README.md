@@ -5,7 +5,7 @@
 - **RA:** [6326033]
 - **Curso:** Análise e Desenvolvimento de Sistemas
 
-## Aluno 1
+## Aluno 2
 - **Nome:** Renan
 - **RA:** [0000000]
 - **Curso:** Análise e Desenvolvimento de Sistemas
