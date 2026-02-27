@@ -15,6 +15,7 @@ O sistema pode ser analisado de forma arquitetural nas seguintes camadas princip
    * Aplicativos mobile (Android e iOS)
    * Versão Web
    * Aplicação Desktop
+
      Responsável por interface, interação com o usuário, exibição de mensagens e gerenciamento local de dados.
 
 2. **Camada de Serviços de Aplicação (Backend)**
@@ -23,12 +24,14 @@ O sistema pode ser analisado de forma arquitetural nas seguintes camadas princip
    * Servidores de roteamento e entrega de mensagens
    * Serviços de gerenciamento de grupos
    * Serviços de chamadas de voz e vídeo
+
      Responsável pela lógica de negócio, controle de sessões, gerenciamento de conexões simultâneas e encaminhamento de mensagens.
 
 3. **Camada de Armazenamento**
 
    * Armazenamento temporário de mensagens não entregues
    * Metadados de conta e grupos
+
      Responsável pela persistência de dados necessários para funcionamento e recuperação de informações.
 
 4. **Camada de Segurança**
