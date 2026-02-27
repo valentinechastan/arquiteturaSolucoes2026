@@ -18,39 +18,61 @@ Escolhemos o WhatsApp por ser um sistema de grande escala, utilizado globalmente
 
 ---
 
+Perfeito 👥
+Abaixo está a seção **totalmente reescrita**, sem nenhum placeholder e já adaptada para a análise do **WhatsApp**, pronta para ir direto no README de vocês:
+
+---
+
 ## Estrutura da Análise
 
 ### 📋 Descrição do Sistema
-- Funcionalidades principais
-- Perfis de usuários
-- Contexto de uso
-- Complexidade operacional
+
+* Envio e recebimento de mensagens instantâneas com criptografia ponta-a-ponta
+* Chamadas de voz e vídeo individuais e em grupo
+* Criação e gerenciamento de grupos e comunidades
+* Compartilhamento de mídia (imagens, vídeos, documentos e áudios)
+* Sincronização de conversas entre dispositivos (multi-dispositivo)
+* Perfis de usuários individuais, administradores de grupos e contas comerciais (WhatsApp Business)
+* Utilização global em contextos pessoais, profissionais e comerciais, com alta demanda de disponibilidade e baixa latência
+
+---
 
 ### 🏗️ Princípios Arquiteturais
-- Separação de responsabilidades
-- Análise de coesão
-- Avaliação de acoplamento
-- Organização em camadas e serviços
+
+* Aplicação de separação de responsabilidades entre clientes (mobile/web), servidores de mensagens e serviços de armazenamento
+* Alta coesão nos serviços responsáveis por autenticação, entrega de mensagens e gerenciamento de grupos
+* Baixo acoplamento entre componentes por meio de APIs e comunicação baseada em serviços
+* Estrutura distribuída para suportar milhões de conexões simultâneas
+* Uso de criptografia ponta-a-ponta como responsabilidade isolada no processo de envio e recebimento de mensagens
+
+---
 
 ### ⚖️ Trade-offs Identificados
-- Segurança vs Performance
-- Disponibilidade vs Consistência
-- Usabilidade vs Privacidade
-- Escalabilidade vs Custo Operacional
+
+* Segurança vs Performance: a criptografia ponta-a-ponta aumenta a proteção dos dados, mas adiciona processamento extra
+* Disponibilidade vs Consistência: priorização da entrega rápida de mensagens mesmo em cenários de sincronização eventual entre dispositivos
+* Escalabilidade vs Custo Operacional: necessidade de infraestrutura global distribuída para manter baixa latência
+* Usabilidade vs Privacidade: recursos como backup em nuvem aumentam conveniência, mas podem reduzir o nível de proteção dos dados
+
+---
 
 ### 📊 Requisitos Não Funcionais
-- Performance
-- Escalabilidade
-- Disponibilidade
-- Segurança
-- Usabilidade
-- Confiabilidade
+
+* Alta performance com baixa latência na entrega de mensagens
+* Escalabilidade horizontal para suportar bilhões de usuários
+* Alta disponibilidade com mínima interrupção do serviço
+* Segurança baseada em criptografia ponta-a-ponta
+* Usabilidade simples e intuitiva
+* Confiabilidade na entrega e sincronização de mensagens
+
+---
 
 ### 💡 Propostas de Melhoria
-- Problema identificado 1
-- Problema identificado 2
-- Soluções arquiteturais propostas
-- Análise dos trade-offs das melhorias
+
+* Implementação de mecanismos mais avançados de moderação automatizada em grupos grandes, mantendo o equilíbrio entre privacidade e controle
+* Aprimoramento da sincronização multi-dispositivo para reduzir inconsistências temporárias de mensagens
+* Adoção de estratégias adicionais de observabilidade e monitoramento distribuído para antecipar falhas
+* Otimização do consumo de recursos em chamadas de vídeo para melhorar desempenho em redes instáveis
 
 ---
 
