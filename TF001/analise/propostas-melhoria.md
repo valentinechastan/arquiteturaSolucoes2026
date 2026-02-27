@@ -1,7 +1,5 @@
 # Proposta de Melhoria
 
----
-
 ## Proposta 1 – Arquitetura de sincronização multi-dispositivo mais desacoplada
 
 ### Problema identificado
