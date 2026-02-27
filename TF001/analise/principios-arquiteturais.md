@@ -1,116 +1,119 @@
-# 2. Análise dos Princípios Arquiteturais
+# Análise dos Princípios Arquiteturais
 
 Sistema analisado: **WhatsApp**
 
 ---
 
-# Separação de Responsabilidades
+## Separação de Responsabilidades
 
-## 1. Diferentes camadas/módulos do sistema
+### Camadas e módulos identificados
 
-O sistema pode ser interpretado arquiteturalmente dividido em:
+O sistema pode ser analisado de forma arquitetural nas seguintes camadas principais:
 
-* **Camada Cliente (Mobile, Web e Desktop)**
-  Interface do usuário, renderização de conversas, captura de mídia e interação.
+1. **Camada de Cliente (Frontend)**
 
-* **Camada de Comunicação em Tempo Real**
-  Responsável pela troca de mensagens entre cliente e servidores.
+   * Aplicativos mobile (Android e iOS)
+   * Versão Web
+   * Aplicação Desktop
+     Responsável por interface, interação com o usuário, exibição de mensagens e gerenciamento local de dados.
 
-* **Camada de Autenticação e Identidade**
-  Validação de número telefônico, gerenciamento de sessão e dispositivos vinculados.
+2. **Camada de Serviços de Aplicação (Backend)**
 
-* **Camada de Criptografia**
-  Implementação de criptografia ponta-a-ponta, geração e troca de chaves.
+   * Servidores de autenticação
+   * Servidores de roteamento e entrega de mensagens
+   * Serviços de gerenciamento de grupos
+   * Serviços de chamadas de voz e vídeo
+     Responsável pela lógica de negócio, controle de sessões, gerenciamento de conexões simultâneas e encaminhamento de mensagens.
 
-* **Camada de Processamento de Mensagens**
-  Roteamento, enfileiramento e confirmação de entrega.
+3. **Camada de Armazenamento**
 
-* **Camada de Armazenamento**
-  Armazenamento temporário de mensagens não entregues e metadados.
+   * Armazenamento temporário de mensagens não entregues
+   * Metadados de conta e grupos
+     Responsável pela persistência de dados necessários para funcionamento e recuperação de informações.
 
-* **Serviços Auxiliares**
-  Notificações push, status, grupos, chamadas de voz/vídeo.
+4. **Camada de Segurança**
 
----
-
-## 2. Como as responsabilidades estão divididas
-
-Cada camada possui uma responsabilidade bem definida:
-
-* O **cliente** é responsável apenas por interface, criptografia local e envio/recebimento.
-* O **servidor** não acessa o conteúdo das mensagens, apenas realiza o roteamento.
-* O módulo de **criptografia** é isolado da lógica de interface.
-* O serviço de **chamadas** opera separado do serviço de mensagens.
-* O módulo de **grupos** gerencia permissões e administração sem interferir na lógica de entrega.
-
-Essa divisão reduz sobreposição de responsabilidades e facilita manutenção.
+   * Implementação da criptografia ponta-a-ponta
+   * Gerenciamento de chaves criptográficas
+     Responsável exclusivamente pela proteção do conteúdo das mensagens.
 
 ---
 
-## 3. Exemplos específicos
+### Divisão de responsabilidades
 
-* A criptografia ocorre no dispositivo antes do envio, demonstrando separação entre segurança e transporte.
-* O WhatsApp Web depende da autenticação já estabelecida no dispositivo móvel, separando autenticação de interface.
-* O serviço de notificações push funciona independentemente do carregamento completo da conversa.
+A responsabilidade da interface e experiência do usuário está isolada no cliente.
+A responsabilidade de entrega e roteamento de mensagens está concentrada nos servidores.
+A responsabilidade de segurança é tratada de forma independente através da criptografia ponta-a-ponta, impedindo que o servidor tenha acesso ao conteúdo das mensagens.
 
----
+Exemplo específico:
 
-# Coesão
+* O aplicativo cifra a mensagem antes do envio.
+* O servidor apenas roteia o conteúdo criptografado.
+* O dispositivo do destinatário realiza a descriptografia.
 
-## 1. Análise do agrupamento de funcionalidades
-
-As funcionalidades são, em geral, bem agrupadas:
-
-* Tudo relacionado a mensagens (envio, recebimento, confirmação de leitura) está concentrado no módulo de mensagens.
-* Funções de chamadas (voz e vídeo) estão agrupadas em um serviço específico.
-* Administração de grupos é centralizada em um módulo próprio.
-
-Isso indica **alta coesão funcional**, pois cada módulo executa tarefas relacionadas entre si.
+Essa divisão reduz riscos de vazamento de dados e permite escalabilidade independente entre interface e infraestrutura.
 
 ---
 
-## 2. Exemplos de alta ou baixa coesão
+## Coesão
 
-**Alta coesão:**
+### Análise do agrupamento de funcionalidades
 
-* Módulo de mensagens, responsável apenas por comunicação textual e entrega.
-* Módulo de chamadas, responsável apenas por comunicação em tempo real por áudio e vídeo.
+O sistema apresenta, de modo geral, **alta coesão funcional** nos seguintes pontos:
 
-**Possível ponto de menor coesão:**
+* O módulo de mensagens concentra apenas funcionalidades relacionadas a envio, recebimento, confirmação de leitura e sincronização.
+* O módulo de chamadas concentra apenas funcionalidades relacionadas a comunicação em tempo real (voz e vídeo).
+* O módulo de grupos concentra gerenciamento de participantes, permissões e administração.
 
-* O recurso de “Status” compartilha infraestrutura com mensagens, mas possui lógica mais próxima de rede social, o que pode indicar mistura de responsabilidades.
-
----
-
-## 3. Sugestões de melhoria
-
-* Isolar ainda mais o módulo de Status como serviço independente, reduzindo dependências com o núcleo de mensagens.
-* Modularizar de forma mais explícita funcionalidades comerciais (WhatsApp Business) para evitar impacto na experiência do usuário comum.
+Cada conjunto de funcionalidades possui um propósito claro e bem definido.
 
 ---
 
-# Acoplamento
+### Exemplos de alta coesão
 
-## 1. Avaliação do nível de dependência entre componentes
-
-O sistema apresenta **baixo acoplamento entre cliente e servidor**, pois a comunicação ocorre via protocolos definidos e APIs.
-
-Entretanto, há **acoplamento moderado entre o cliente móvel e o WhatsApp Web**, já que o funcionamento da versão web depende da autenticação ativa no dispositivo principal.
+* O serviço de autenticação trata exclusivamente login, verificação de número e validação de sessão.
+* O serviço de gerenciamento de grupos trata apenas criação, remoção de membros e permissões administrativas.
 
 ---
 
-## 2. Pontos de alto acoplamento identificados
+### Possível ponto de melhoria
 
-* Dependência do número de telefone como identificador único.
-* Dependência inicial do dispositivo móvel para ativação da conta.
-* Sincronização entre múltiplos dispositivos pode gerar dependência de estado.
+A funcionalidade de “Status” possui comportamento semelhante a uma rede social, diferente da função principal de mensageria. Isso pode indicar menor coesão conceitual dentro do sistema como um todo.
+
+Uma possível melhoria seria isolar arquiteturalmente o serviço de Status como um serviço independente, reduzindo impacto estrutural sobre o núcleo de mensagens.
 
 ---
 
-## 3. Impacto no sistema
+## Acoplamento
 
-* O acoplamento ao número telefônico limita flexibilidade de identidade digital.
-* A dependência inicial do celular impacta a experiência de usuários que desejam uso independente no desktop.
-* O acoplamento na sincronização pode gerar inconsistências temporárias em mensagens multi-dispositivo.
+### Nível de dependência entre componentes
 
-Apesar desses pontos, o sistema mantém equilíbrio entre acoplamento e desempenho, priorizando simplicidade operacional e segurança.
+O sistema apresenta **baixo acoplamento entre cliente e servidor**, pois a comunicação ocorre por meio de protocolos bem definidos e APIs específicas.
+
+O cliente depende do backend para:
+
+* Autenticação
+* Sincronização
+* Entrega de mensagens
+
+Entretanto, o backend não depende da interface específica utilizada (mobile, web ou desktop), o que demonstra desacoplamento da camada de apresentação.
+
+---
+
+### Pontos de maior acoplamento
+
+* A sincronização multi-dispositivo exige forte integração entre controle de sessão, armazenamento temporário e roteamento de mensagens.
+* O sistema de chamadas depende de integração direta com serviços de rede em tempo real, aumentando a complexidade e dependência entre módulos.
+
+---
+
+### Impacto do acoplamento no sistema
+
+Alto acoplamento pode dificultar evolução e manutenção.
+No caso do WhatsApp, o uso de arquitetura distribuída e divisão clara de responsabilidades reduz esse risco, permitindo:
+
+* Escalabilidade horizontal
+* Atualizações independentes de componentes
+* Menor impacto de falhas isoladas
+
+De forma geral, o sistema apresenta boa aplicação dos princípios de separação de responsabilidades, alta coesão nos módulos principais e controle adequado de acoplamento, considerando sua complexidade e escala global.
