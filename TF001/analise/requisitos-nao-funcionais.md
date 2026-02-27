@@ -1,7 +1,5 @@
 # Análise de Requisitos Não Funcionais
 
----
-
 ## Performance
 
 O sistema apresenta baixa latência na entrega de mensagens, mesmo sob alta carga de usuários simultâneos. Em condições normais de rede, mensagens de texto são entregues quase instantaneamente.
