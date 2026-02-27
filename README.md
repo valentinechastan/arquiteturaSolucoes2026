@@ -1,0 +1,1 @@
+# arquiteturaSolucoes2026
