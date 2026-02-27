@@ -38,6 +38,7 @@ O sistema pode ser analisado de forma arquitetural nas seguintes camadas princip
 
    * Implementação da criptografia ponta-a-ponta
    * Gerenciamento de chaves criptográficas
+
      Responsável exclusivamente pela proteção do conteúdo das mensagens.
 
 ---
