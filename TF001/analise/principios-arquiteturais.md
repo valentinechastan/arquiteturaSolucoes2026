@@ -1,7 +1,5 @@
 # Análise dos Princípios Arquiteturais
 
-Sistema analisado: **WhatsApp**
-
 ---
 
 ## Separação de Responsabilidades
