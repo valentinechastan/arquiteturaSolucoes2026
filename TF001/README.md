@@ -18,11 +18,6 @@ Escolhemos o WhatsApp por ser um sistema de grande escala, utilizado globalmente
 
 ---
 
-Perfeito 👥
-Abaixo está a seção **totalmente reescrita**, sem nenhum placeholder e já adaptada para a análise do **WhatsApp**, pronta para ir direto no README de vocês:
-
----
-
 ## Estrutura da Análise
 
 ### 📋 Descrição do Sistema
