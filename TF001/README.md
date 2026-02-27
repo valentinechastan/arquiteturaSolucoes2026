@@ -10,11 +10,12 @@
 ---
 
 ## Sistema Analisado
-- **Nome:** WhatsApp
-- **Categoria:** Comunicação / Mensageria Instantânea
-- **Plataforma:** Mobile (Android/iOS), Web e Desktop
-- **Justificativa da Escolha:**
-Escolhemos o WhatsApp por ser um sistema de grande escala, utilizado globalmente por bilhões de usuários, apresentando desafios arquiteturais relevantes como alta disponibilidade, escalabilidade massiva, criptografia ponta a ponta e comunicação em tempo real.
+
+* **Nome:** WhatsApp
+* **Categoria:** Aplicação de Mensageria Instantânea
+* **Plataforma:** Mobile, Web e Desktop
+* **Justificativa da Escolha:**
+  O sistema foi escolhido por sua ampla utilização global, alta complexidade arquitetural e necessidade de lidar com escalabilidade massiva, segurança avançada (criptografia ponta-a-ponta) e alta disponibilidade em tempo real.
 
 ---
 
@@ -22,52 +23,44 @@ Escolhemos o WhatsApp por ser um sistema de grande escala, utilizado globalmente
 
 ### 📋 Descrição do Sistema
 
-* Envio e recebimento de mensagens instantâneas com criptografia ponta-a-ponta
-* Chamadas de voz e vídeo individuais e em grupo
-* Criação e gerenciamento de grupos e comunidades
-* Compartilhamento de mídia (imagens, vídeos, documentos e áudios)
-* Sincronização de conversas entre dispositivos (multi-dispositivo)
-* Perfis de usuários individuais, administradores de grupos e contas comerciais (WhatsApp Business)
-* Utilização global em contextos pessoais, profissionais e comerciais, com alta demanda de disponibilidade e baixa latência
+* Propósito e funcionamento da plataforma
+* Funcionalidades principais
+* Perfis de usuários e escala global
+* Contexto de uso em dispositivos mobile, web e desktop
 
 ---
 
 ### 🏗️ Princípios Arquiteturais
 
-* Aplicação de separação de responsabilidades entre clientes (mobile/web), servidores de mensagens e serviços de armazenamento
-* Alta coesão nos serviços responsáveis por autenticação, entrega de mensagens e gerenciamento de grupos
-* Baixo acoplamento entre componentes por meio de APIs e comunicação baseada em serviços
-* Estrutura distribuída para suportar milhões de conexões simultâneas
-* Uso de criptografia ponta-a-ponta como responsabilidade isolada no processo de envio e recebimento de mensagens
+* Separação de responsabilidades entre cliente, backend, armazenamento e segurança
+* Análise de coesão dos módulos principais (mensagens, chamadas, grupos)
+* Avaliação do nível de acoplamento entre componentes e serviços
 
 ---
 
 ### ⚖️ Trade-offs Identificados
 
-* Segurança vs Performance: a criptografia ponta-a-ponta aumenta a proteção dos dados, mas adiciona processamento extra
-* Disponibilidade vs Consistência: priorização da entrega rápida de mensagens mesmo em cenários de sincronização eventual entre dispositivos
-* Escalabilidade vs Custo Operacional: necessidade de infraestrutura global distribuída para manter baixa latência
-* Usabilidade vs Privacidade: recursos como backup em nuvem aumentam conveniência, mas podem reduzir o nível de proteção dos dados
+* Segurança vs Performance
+* Disponibilidade vs Consistência
+* Escalabilidade vs Custo Operacional
+* Usabilidade vs Privacidade
 
 ---
 
 ### 📊 Requisitos Não Funcionais
 
-* Alta performance com baixa latência na entrega de mensagens
-* Escalabilidade horizontal para suportar bilhões de usuários
-* Alta disponibilidade com mínima interrupção do serviço
+* Performance sob alta carga
+* Escalabilidade horizontal
+* Alta disponibilidade global
 * Segurança baseada em criptografia ponta-a-ponta
-* Usabilidade simples e intuitiva
-* Confiabilidade na entrega e sincronização de mensagens
+* Usabilidade e simplicidade de interface
 
 ---
 
 ### 💡 Propostas de Melhoria
 
-* Implementação de mecanismos mais avançados de moderação automatizada em grupos grandes, mantendo o equilíbrio entre privacidade e controle
-* Aprimoramento da sincronização multi-dispositivo para reduzir inconsistências temporárias de mensagens
-* Adoção de estratégias adicionais de observabilidade e monitoramento distribuído para antecipar falhas
-* Otimização do consumo de recursos em chamadas de vídeo para melhorar desempenho em redes instáveis
+* Criação de um serviço dedicado à sincronização multi-dispositivo para reduzir inconsistências e aumentar modularidade
+* Isolamento arquitetural das funcionalidades sociais (Status e Comunidades) para aumentar coesão e escalabilidade independente
 
 ---
 
