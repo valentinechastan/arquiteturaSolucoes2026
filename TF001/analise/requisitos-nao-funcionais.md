@@ -17,5 +17,3 @@ Criptografia ponta a ponta baseada no protocolo Signal.
 ## Usabilidade
 
 Interface simples e intuitiva.
-
-Qual sistema você quer usar oficialmente?
