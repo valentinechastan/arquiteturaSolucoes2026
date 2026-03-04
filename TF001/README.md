@@ -3,8 +3,8 @@
 ## Alunos
 - **Nome:** Valentine Louise de Chastan Bisanson Santos
 - **RA:** 6326033
-- **Nome:** Renan
-- **RA:** 0000000
+- **Nome:** Renan Gabriel Oliveira da Silva
+- **RA:** 6326093
 - **Curso:** Análise e Desenvolvimento de Sistemas
 
 ---
